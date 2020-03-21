@@ -1,0 +1,29 @@
+name: Deploy to Github Pages
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get commit message
+        run: echo ::set-env name=COMMIT_MESSAGE::$(git log --format=%B -n 1 ${{ github.event.after }})
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: npm install
+      - run: git clone https://github.com/ProtofyTeam/oxygen-project-public-site.git
+      - run: ./build.sh -o oxygen-project-public-site
+      - name: Publish
+        working-directory: ./oxygen-project-public-site
+        run: |
+          git checkout -b test_1
+          git config --global user.email "$GITHUB_ACTOR@protofy.xyz"
+          git config --global user.name "$GITHUB_ACTOR"
+          git remote add github "https://$GIT_AUTH_ACTOR:$GIT_AUTH_TOKEN@github.com/ProtofyTeam/oxygen-project-public-site.git"
+          git add .
+          git commit -m "$COMMIT_MESSAGE"
+          git push github test_1

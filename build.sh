@@ -3,6 +3,17 @@
 set -x #echo on
 npx hexo clean
 
+output="../oxygen-project-public-site"
+
+while getopts ":o:" opt; do
+  case $opt in
+    o) output="$OPTARG"
+    ;;
+    \?) echo "Invalid option -$OPTARG" >&2
+    ;;
+  esac
+done
+
 #clean public and source dirs in each lang build
 cleanBuild () {
   unlink source
@@ -29,9 +40,9 @@ generateLang() {
   npx hexo generate
 
   if [ $1 == "en" ]; then
-    cp -a public/. "../oxygen-project-public-site"
+    cp -a public/. "$output"
   else
-    cp -a public/. "../oxygen-project-public-site/$1"
+    cp -a public/. "$output/$1"
   fi
 
   cleanBuild

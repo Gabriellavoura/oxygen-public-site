@@ -68,7 +68,7 @@ Este proyecto no sería posible sin:
 - [Ap0](https://linkedin.com/in/noemi-blázquez-b0034732)
 - [Marc](https://www.linkedin.com/in/marc-watine/)
 - [Carla](https://www.linkedin.com/in/carla-w-535719130/)
-- [Alejandro](https://www.linkedin.com/in/alejandrorosasdev/)
+- [Alejandro Rosas](https://www.linkedin.com/in/alejandrorosasdev/)
 - [CovidWarriors](https://www.covidwarriors.io/)
 - [CoronavirusMakers](https://foro.coronavirusmakers.org/)
 - [Zocama](https://www.zocama.com)
